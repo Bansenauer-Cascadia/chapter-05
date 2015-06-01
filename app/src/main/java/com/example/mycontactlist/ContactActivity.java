@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -26,9 +27,10 @@ import android.widget.ToggleButton;
 public class ContactActivity extends FragmentActivity implements SaveDateListener {
 	
 	private Contact currentContact;
-	
+	private ImageButton list;
 
-    @Override
+
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
     	
         super.onCreate(savedInstanceState);
@@ -53,6 +55,18 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
         getMenuInflater().inflate(R.menu.contact, menu);
         return true;
     }
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+			case R.id.action_settings:
+				return list.performClick();
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+
+	}
     
 	private void initListButton() {
         ImageButton list = (ImageButton) findViewById(R.id.imageButtonList);
@@ -76,7 +90,7 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
         });
 	}
 	private void initSettingsButton() {
-        ImageButton list = (ImageButton) findViewById(R.id.imageButtonSettings);
+        list = (ImageButton) findViewById(R.id.imageButtonSettings);
         list.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
     			Intent intent = new Intent(ContactActivity.this, ContactSettingsActivity.class);
@@ -108,7 +122,7 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 				ContactDataSource ds = new ContactDataSource(ContactActivity.this);
 				ds.open();
 				
-				boolean wasSuccessful = false;
+				boolean wasSuccessful;
 				if (currentContact.getContactID()==-1) {
 					wasSuccessful = ds.insertContact(currentContact);
 					int newId = ds.getLastContactId();
