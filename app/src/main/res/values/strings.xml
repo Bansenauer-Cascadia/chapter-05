@@ -8,10 +8,4 @@
     <string name="title_activity_contact_map">Contacts Map</string>
     <string name="title_activity_contact_settings">Settings</string>
 
-    <array name="bground_color_List">
-        <item>BGround Color 1</item>
-        <item>BGround Color 2</item>
-        <item>BGround Color 3</item>
-    </array>
-
 </resources>

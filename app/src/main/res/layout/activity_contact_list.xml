@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ContactListActivity" >
+    tools:context=".ContactListActivity"
+    android:id="@+id/activity_contact_list">
 
     <TextView
         android:layout_width="wrap_content"

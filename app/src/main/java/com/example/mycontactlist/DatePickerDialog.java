@@ -1,5 +1,7 @@
 package com.example.mycontactlist;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.format.Time;
@@ -9,12 +11,14 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RelativeLayout;
 
 public class DatePickerDialog extends DialogFragment {
 
 	public interface SaveDateListener {
 		void didFinishDatePickerDialog(Time selectedTime);
 	}
+
 
     public DatePickerDialog() {
         // Empty constructor required for DialogFragment

@@ -2,6 +2,7 @@ package com.example.mycontactlist;
 
 import com.example.mycontactlist.DatePickerDialog.SaveDateListener;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -43,11 +45,19 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
         initChangeDateButton();
         initTextChangedEvents();
         initSaveButton();
+		initBGSetting();
         
         setForEditing(false);
         currentContact = new Contact();
     }
 
+	private void initBGSetting()
+	{
+		String bgColor = getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).getString("bgcolor", "#F5F5DC");
+
+		RelativeLayout thisLayout = (RelativeLayout) findViewById(R.id.activity_contact);
+		thisLayout.setBackgroundColor(Color.parseColor(bgColor));
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

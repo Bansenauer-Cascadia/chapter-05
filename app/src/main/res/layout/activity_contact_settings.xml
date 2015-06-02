@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactSettingsActivity" >
+    tools:context=".ContactSettingsActivity"
+    android:id="@+id/activity_setting_layout">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -112,35 +113,47 @@
                 android:paddingBottom="15dp">
 
                 <RadioButton
-                    android:id="@+id/radioBGround1"
+                    android:id="@+id/radioBGBeige"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Background 1" />
+                    android:text="Beige #F5F5DC"
+                    android:background="@color/bg_Beige" />
 
                 <RadioButton
-                    android:id="@+id/radioBGround2"
+                    android:id="@+id/radioBGViolet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Background 2" />
+                    android:text="Violet #EE82EE"
+                    android:background="@color/bg_Violet" />
 
                 <RadioButton
-                    android:id="@+id/radioBGround3"
+                    android:id="@+id/radioBGCadetBlue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Background 3" />
+                    android:text="CadetBlue #5F9EA0"
+                    android:background="@color/bg_CadetBlue" />
 
                 <RadioButton
-                    android:id="@+id/radioBGround4"
+                    android:id="@+id/radioBGGainsboro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Background 4" />
+                    android:text="Gainsboro #DCDCDC"
+                    android:background="@color/bg_Gainsboro" />
 
                 <RadioButton
-                    android:id="@+id/radioBGround5"
+                    android:id="@+id/radioBGLightCoral"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Background 5" />
+                    android:text="LightCoral #F08080"
+                    android:background="@color/bg_LightCoral" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LightBlue #ADD8E6"
+                    android:id="@+id/radioBGLightBlue"
+                    android:background="@color/bg_LightBlue" />
             </RadioGroup>
         </RelativeLayout>
     </ScrollView>

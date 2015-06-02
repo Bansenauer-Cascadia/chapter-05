@@ -2,7 +2,161 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactSettingsActivity" >
+    tools:context=".ContactSettingsActivity"
+    android:id="@+id/activity_setting_layout">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_marginBottom="60dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Sort Contact By:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView1"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                 >
+
+                <RadioButton
+                    android:id="@+id/radioName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Name" />
+
+                <RadioButton
+                    android:id="@+id/radioCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="City" />
+
+                <RadioButton
+                    android:id="@+id/radioBirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Birthday" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/radioGroup1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Sort Order:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textView2" >
+
+                <RadioButton
+                    android:id="@+id/radioAscending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Ascending" />
+
+                <RadioButton
+                    android:id="@+id/radioDescending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descending" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/radioGroup2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Background Color:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textView3"
+                android:paddingBottom="15dp">
+
+                <RadioButton
+                    android:id="@+id/radioBGBeige"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Beige #F5F5DC"
+                    android:background="@color/bg_Beige" />
+
+                <RadioButton
+                    android:id="@+id/radioBGViolet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Violet #EE82EE"
+                    android:background="@color/bg_Violet" />
+
+                <RadioButton
+                    android:id="@+id/radioBGCadetBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CadetBlue #5F9EA0"
+                    android:background="@color/bg_CadetBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioBGGainsboro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gainsboro #DCDCDC"
+                    android:background="@color/bg_Gainsboro" />
+
+                <RadioButton
+                    android:id="@+id/radioBGLightCoral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LightCoral #F08080"
+                    android:background="@color/bg_LightCoral" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LightBlue #ADD8E6"
+                    android:id="@+id/radioBGLightBlue"
+                    android:background="@color/bg_LightBlue" />
+            </RadioGroup>
+        </RelativeLayout>
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/navbar"
@@ -38,80 +192,5 @@
             android:src="@drawable/settingsicon" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="Sort Contact By:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="10dp"
-         >
-
-        <RadioButton
-            android:id="@+id/radioName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Name" />
-
-        <RadioButton
-            android:id="@+id/radioCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="City" />
-
-        <RadioButton
-            android:id="@+id/radioBirthday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Birthday" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/radioGroup1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="Sort Order:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/textView2" >
-
-        <RadioButton
-            android:id="@+id/radioAscending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Ascending" />
-
-        <RadioButton
-            android:id="@+id/radioDescending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Descending" />
-
-    </RadioGroup>
-
-</RelativeLayout><!-- From: file:/Users/brianb/git/MobileApps-Cascadia/chapter-05/app/src/main/res/layout/activity_contact_settings.xml -->
+</RelativeLayout><!-- From: file:/F:/Cascadia_Online_Courses/Course_BIT271/chapter-05/app/src/main/res/layout/activity_contact_settings.xml -->
