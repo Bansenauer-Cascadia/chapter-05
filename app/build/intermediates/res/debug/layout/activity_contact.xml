@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactActivity" >
+    tools:context=".ContactActivity"
+    android:id="@+id/activity_contact">
     
                 <LinearLayout
             android:focusable="true"
@@ -287,4 +288,4 @@
     </ScrollView>
 
 
-</RelativeLayout><!-- From: file:/Users/brianb/git/MobileApps-Cascadia/chapter-05/app/src/main/res/layout/activity_contact.xml -->
+</RelativeLayout><!-- From: file:/F:/Cascadia_Online_Courses/Course_BIT271/chapter-05/app/src/main/res/layout/activity_contact.xml -->

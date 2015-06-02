@@ -1,5 +1,7 @@
 package com.example.mycontactlist;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ContactSettingsActivity extends Activity {
 
@@ -24,6 +28,8 @@ public class ContactSettingsActivity extends Activity {
 		initListButton();
 		initMapButton();
 		initSettingsButton();
+		initBGSetting();
+		initBGColorClick();
 	}
 
 	@Override
@@ -31,6 +37,53 @@ public class ContactSettingsActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.contact_settings, menu);
 		return true;
+	}
+
+	private void initBGSetting()
+	{
+		String bgColor = getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).getString("bgcolor", "#F5F5DC");
+
+		RelativeLayout thisLayout = (RelativeLayout) findViewById(R.id.activity_setting_layout);
+		thisLayout.setBackgroundColor(Color.parseColor(bgColor));
+	}
+
+	private void initBGColorClick() {
+		RadioGroup bgColorSelect = (RadioGroup) findViewById(R.id.radioGroup3);
+		bgColorSelect.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(RadioGroup arg0, int arg1) {
+				RadioButton bgColorBeige = (RadioButton) findViewById(R.id.radioBGBeige);
+				RadioButton bgColorViolet = (RadioButton) findViewById(R.id.radioBGViolet);
+				RadioButton bgColorCadetBlue = (RadioButton) findViewById(R.id.radioBGCadetBlue);
+				RadioButton bgColorGainsboro = (RadioButton) findViewById(R.id.radioBGGainsboro);
+				RadioButton bgColorLightCoral = (RadioButton) findViewById(R.id.radioBGLightCoral);
+				RadioButton bgColorLightBlue = (RadioButton) findViewById(R.id.radioBGLightBlue);
+
+				String temp[] = null;
+				if (bgColorBeige.isChecked()) {
+					temp = bgColorBeige.getText().toString().split("\\s+");
+					getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).edit().putString("bgcolor", temp[1].trim()).commit();
+				}else if (bgColorViolet.isChecked()) {
+					temp = bgColorViolet.getText().toString().split("\\s+");
+					getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).edit().putString("bgcolor", temp[1].trim()).commit();
+				}else if (bgColorCadetBlue.isChecked()) {
+					temp = bgColorCadetBlue.getText().toString().split("\\s+");
+					getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).edit().putString("bgcolor", temp[1].trim()).commit();
+				}else if (bgColorGainsboro.isChecked()) {
+					temp = bgColorGainsboro.getText().toString().split("\\s+");
+					getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).edit().putString("bgcolor", temp[1].trim()).commit();
+				}else if (bgColorLightCoral.isChecked()) {
+					temp = bgColorLightCoral.getText().toString().split("\\s+");
+					getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).edit().putString("bgcolor", temp[1].trim()).commit();
+				}else{// if (bgColorLightCoral.isChecked()) {
+					temp = bgColorLightBlue.getText().toString().split("\\s+");
+					getSharedPreferences("MyBackgroundColorPreferences", Context.MODE_PRIVATE).edit().putString("bgcolor", temp[1].trim()).commit();
+				}
+
+				initBGSetting();    //change layout color after change
+			}
+		});
 	}
 
 	private void initSettings() {
