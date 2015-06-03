@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/brianb/git/MobileApps-Cascadia/chapter-05/app/src/main/res/values/color.xml -->
+    <!-- From: file:/C:/Users/Scott/Documents/GitHub/chapter-05/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="navbar_background">#1a1a48</color>
+    <color name="settingsBlue">#ff69d1ff</color>
+    <color name="settingsGreen">#ff41ff40</color>
+    <color name="settingsPink">#ffffa4c9</color>
     <color name="toolbar_background">#bebebe</color>
-    <!-- From: file:/Users/brianb/git/MobileApps-Cascadia/chapter-05/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Scott/Documents/GitHub/chapter-05/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/Users/brianb/git/MobileApps-Cascadia/chapter-05/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Scott/Documents/GitHub/chapter-05/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">MyContactList</string>
@@ -16,7 +19,7 @@
     <string name="title_activity_contact_list">Contact List</string>
     <string name="title_activity_contact_map">Contacts Map</string>
     <string name="title_activity_contact_settings">Settings</string>
-    <!-- From: file:/Users/brianb/git/MobileApps-Cascadia/chapter-05/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Scott/Documents/GitHub/chapter-05/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
