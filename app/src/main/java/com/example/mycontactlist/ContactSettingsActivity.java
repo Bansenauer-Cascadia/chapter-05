@@ -1,15 +1,18 @@
 package com.example.mycontactlist;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 
 public class ContactSettingsActivity extends Activity {
 
@@ -127,5 +130,35 @@ public class ContactSettingsActivity extends Activity {
         });
 	}
 
+    private void initSettingsColor(){
+        RadioButton blueScreen = (RadioButton) findViewById(R.id.settingsBlue);
+        RadioButton greenScreen = (RadioButton) findViewById(R.id.settingsGreen);
+        RadioButton pinkScreen = (RadioButton) findViewById(R.id.settingsPink);
+        final RelativeLayout background = (RelativeLayout) findViewById(R.id.background);
+        blueScreen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    background.setBackgroundColor(Color.BLUE);
+                }
+            }
+        });
+        greenScreen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    background.setBackgroundColor(Color.GREEN);
+                }
+            }
+        });
+        pinkScreen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    background.setBackgroundColor(Color.MAGENTA);
+                }
+            }
+        });
+
 	
-}
+}}
