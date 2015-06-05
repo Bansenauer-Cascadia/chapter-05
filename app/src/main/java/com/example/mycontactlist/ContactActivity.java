@@ -41,10 +41,15 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
         initSettingsButton();
         initToggleButton();
         initChangeDateButton();
+
+		// 1. If the text changes, the listener executes the code to set the attribute that holds
+		// the code in the currentContact object
         initTextChangedEvents();
+		// SaveButton method
         initSaveButton();
         
         setForEditing(false);
+		// Step2: Associate the currentContact variable with a new Contact object (p99)
         currentContact = new Contact();
     }
 
@@ -112,6 +117,7 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 		});
 	}
 
+	// Save button code (p102)
 	private void initSaveButton() {
 		Button saveButton = (Button) findViewById(R.id.buttonSave);
 		saveButton.setOnClickListener(new View.OnClickListener() {
@@ -119,20 +125,30 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 			@Override
 			public void onClick(View v) {
 				hideKeyboard();
+				// A new ContactDataSource object is instantiated.
 				ContactDataSource ds = new ContactDataSource(ContactActivity.this);
+				// Open database
 				ds.open();
 				
 				boolean wasSuccessful;
+				// currentContactID is -1, that means this is a new contact
 				if (currentContact.getContactID()==-1) {
 					wasSuccessful = ds.insertContact(currentContact);
+					// (p105) Clicking Save button twice in a row doesn't create duplicate contacts
+					// The first line uses the retrieval method in ContactDataSource.java to get
+					// the newly inserted contact's ID.
+					// The second line sets the currentContact object's ID to the retrieved value.
 					int newId = ds.getLastContactId();
 					currentContact.setContactID(newId);
 				}
+				// If contact already exists
 				else {
 					wasSuccessful = ds.updateContact(currentContact);
 				}
+				// Close database
 				ds.close();
-				
+				// Check the return value. If successful, the ToggleButton is toggled to viewing mode.
+				// if unsuccessful, the activity remains in editing mode.
 				if (wasSuccessful) {
 					ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleButtonEdit);
 		    		editToggle.toggle();
@@ -142,17 +158,24 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 		});
 	}
 
+	// 2. initTextChangeEvents method
 	private void initTextChangedEvents(){
 		final EditText contactName = (EditText) findViewById(R.id.editName);
 		contactName.addTextChangedListener(new TextWatcher() {
+
+			//This is a required method for the TextWatcher OBJECT.
+			// This is the event that this app uses to capture the data the user entered.
 			public void afterTextChanged(Editable s) {
 				currentContact.setContactName(contactName.getText().toString());
 			}
+			//This is a required method for the TextWatcher METHOD.
 			public void beforeTextChanged(CharSequence arg0, int arg1,
 					int arg2, int arg3) {
 				//  Auto-generated method stub
 
 			}
+			//This is a required method for the TextWatcher METHOD.
+			// This method is executed after each and every character change in an EditText.
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				//  Auto-generated method stub		
@@ -281,6 +304,10 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 			}
 		});
 
+		// These auto-formats the number as it's typed in phone# and cell EditText.
+		// This code adds a listener to the phopne number EditTexts that calls the
+		// 	PhoneNumberFormattingTextWatcher object, which in turn adds the appropriate
+		// 		formatting as the user types.
 		phoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 		cellNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 	}
@@ -307,7 +334,9 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 		editEmail.setEnabled(enabled);
 		buttonChange.setEnabled(enabled);
 		buttonSave.setEnabled(enabled);
-		
+
+		// Change the ScrollView's focus to the top of the screen when switching to
+		// Viewing mode(p103)
 		if (enabled) {
 			editName.requestFocus();
 		}
@@ -356,7 +385,12 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 	@Override
 	public void didFinishDatePickerDialog(Time selectedTime) {
 		TextView birthDay = (TextView) findViewById(R.id.textBirthday);
-		birthDay.setText(DateFormat.format("MM/dd/yyyy", selectedTime.toMillis(false)).toString());		
+		birthDay.setText(DateFormat.format("MM/dd/yyyy", selectedTime.toMillis(false)).toString());
+
+		// Step3: Store the selected birthday in the Contact object (p99)
+		// This code uses the Contact class's setBirthday method to assign the data selected
+		// in the custom dialog to the currentContact object.
+		currentContact.setBirthday(selectedTime);
 	}
     
 }
