@@ -23,6 +23,9 @@ public class ContactDataSource {
 		dbHelper.close();
 	}
 
+
+	// Listing 5.4 Insert and Upgrade Contact Methods (p97)
+	// insertContact method
 	public boolean insertContact(Contact c) 
 	{
 		boolean didSucceed = false;
@@ -48,7 +51,8 @@ public class ContactDataSource {
 		return didSucceed;
 	}
 
-	public boolean updateContact(Contact c) 
+	// updateContact method
+	public boolean updateContact(Contact c)
 	{
 		boolean didSucceed = false;
 		try {
@@ -72,12 +76,38 @@ public class ContactDataSource {
 		}
 		return didSucceed;
 	}
-	
+
+	// Exercise 2 - updateAddress method
+	public boolean updateAddress(ContactAddress ca)
+	{
+		boolean didSucceed = false;
+		try {
+			Long rowId = Long.valueOf(ca.getContactID());
+			ContentValues updateValues = new ContentValues();
+
+			updateValues.put("streetaddress", ca.getStreetAddress());
+			updateValues.put("city", ca.getCity());
+			updateValues.put("state", ca.getState());
+			updateValues.put("zipcode", ca.getZipCode());
+
+			didSucceed = database.update("contact", updateValues, "_id=" + rowId, null) > 0;
+		}
+		catch (Exception e) {
+			//Do Nothing -will return false if there is an exception
+		}
+		return didSucceed;
+	}
+
+	// This code gets the new ID and sets the currentContact ContactID attribute to that value
+	// to prevent adding another contact when user clicks Save button twice in a row (p104).
 	public int getLastContactId() {
 		int lastId = -1;
 		try
-		{       	
+		{
+			// Get the maximum value for the _id field in the contact table
 			String query = "Select MAX(_id) from contact";
+			// A cursor is declared and assigned to hold the results of the execution of the query.
+			// A cursor is an object that is used to hold and move through the results of a query.
 			Cursor cursor = database.rawQuery(query, null);  
 
 			cursor.moveToFirst();
