@@ -11,7 +11,7 @@ public class Contact {
 	private String zipCode;
 	private String phoneNumber;
 	private String cellNumber;
-	private String eMail;
+ 	private String eMail;
 	private Time birthday;
 	
 	public Contact() {
@@ -81,4 +81,6 @@ public class Contact {
 	public String getEMail() {
 		return eMail;
 	}
+
+
 }

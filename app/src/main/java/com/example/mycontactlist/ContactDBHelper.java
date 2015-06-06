@@ -33,6 +33,9 @@ public class ContactDBHelper extends SQLiteOpenHelper {
 	        "Upgrading database from version " + oldVersion + " to "
 	            + newVersion + ", which will destroy all old data");
 	    db.execSQL("DROP TABLE IF EXISTS contact");
+
+
+
 	    onCreate(db);
 	  }
 
