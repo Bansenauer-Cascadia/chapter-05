@@ -2,5 +2,11 @@
 <resources>
     <color name="navbar_background">#1a1a48</color>
     <color name="toolbar_background">#bebebe</color>
+    <color name="lavendar">#ffd8bfff</color>
+    <color name="gold">#ffffb348</color>
+    <color name="pink">#ffffc1d6</color>
+    <color name="Yellow">#ffff00</color>
+    <color name="Green">#00ff00</color>
+    <color name="Cyan">#00ffff</color>
     
 </resources>
